@@ -1,11 +1,5 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import Router from './routes/Router';
-// 캐시에 있는 query를 볼 수 있음.
-import { ReactQueryDevtools } from 'react-query/devtools';
-import { darkTheme, lightTheme } from './theme';
-import { useState } from 'react';
-import { isDarkAtom } from './atoms';
-import { useRecoilValue } from 'recoil';
+import { createGlobalStyle } from 'styled-components';
+import ToDoList from './ToDoList';
 
 // 전체 도큐먼트에 스타일 적용.
 const GlobalStyle = createGlobalStyle`
@@ -70,14 +64,10 @@ a {
 `;
 
 function App() {
-  const isDark = useRecoilValue(isDarkAtom);
   return (
     <>
-      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-        <GlobalStyle />
-        <Router />
-        <ReactQueryDevtools initialIsOpen={true} />
-      </ThemeProvider>
+      <GlobalStyle />
+      <ToDoList />
     </>
   );
 }
